@@ -8,7 +8,7 @@ RUN dnscontrol version
 RUN go build -o cmd/convertzone/convertzone cmd/convertzone/main.go
 RUN cp cmd/convertzone/convertzone /go/bin/convertzone
 
-FROM alpine
+FROM alpine:3.15
 RUN apk add --no-cache ca-certificates
 COPY --from=build-env /go/bin/dnscontrol /usr/local/bin
 COPY --from=build-env /go/bin/convertzone /usr/local/bin
